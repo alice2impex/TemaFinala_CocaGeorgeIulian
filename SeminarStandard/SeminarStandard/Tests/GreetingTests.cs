@@ -45,5 +45,47 @@ namespace SeminarStandard
 		{
 			ExecuteTest("JERRY", "HELLO JERRY!");
 		}
+
+		[Test]
+		public void ShouldHandleTwoNamesArray()
+		{
+			//Arrange
+
+			//Act
+			string[] names = { "Jill", "Jane" };
+			string result = greeting.GreetMultipleNames(names);
+
+			//Assert
+			Assert.AreEqual("Hello, Jill and Jane.", result);
+		}
+
+
+		[Test]
+		public void ShouldHandleTwoNames()
+		{
+			ExecuteTest("Jill,Jane", "Hello, Jill and Jane.");
+		}
+
+		[Test]
+		public void ShouldHandleThreeNames()
+		{
+			ExecuteTest("Amy,Brian,Charlotte", "Hello, Amy, Brian, and Charlotte.");
+		}
+
+
+		[Test]
+		public void ShouldHandleMixedNames()
+		{
+			ExecuteTest("Amy,BRIAN,Charlotte", "Hello, Amy and Charlotte. AND HELLO BRIAN!");
+		}
+
+
+		[Test]
+		public void ShouldHandleMultipleShouting()
+		{
+			ExecuteTest("AMY,BRIAN", "HELLO AMY AND BRIAN!");
+		}
+
+
 	}
 }
