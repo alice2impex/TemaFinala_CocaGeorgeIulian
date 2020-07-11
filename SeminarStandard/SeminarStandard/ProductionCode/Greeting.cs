@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SeminarStandard.ProductionCode;
+using System;
 using System.Linq;
 
 namespace SeminarStandard
@@ -6,20 +7,25 @@ namespace SeminarStandard
 	internal class Greeting
 	{
 		const string hello = "Hello";
-		const string HELLO = "HELLO";
-		const string coma = ",";
 		const string and = "and";
+		const string coma = ",";
+		const string HELLO = "HELLO";
 		const string AND = "AND";
 
 		string result;
+		SimpleMessage simpleMessage;
+		ShoutingMessage shoutingMessage;
 
 		internal string Greet(string name)
 		{
+			simpleMessage = new SimpleMessage();
+			shoutingMessage = new ShoutingMessage();
+
 			result = string.Empty;
 
 			if (string.IsNullOrEmpty(name))
 			{
-				result = $"{hello}{coma} my friend.";
+				result = $"{simpleMessage.Hello}{coma} my friend.";
 			}
 			else
 			{
@@ -83,7 +89,7 @@ namespace SeminarStandard
 			string res = string.Empty;
 			if (names.Length > 0)
 			{
-				res = $"{hello}{coma} {names[0]}";
+				res = simpleMessage.GetNamesStartingMessage(names[0]);
 
 				if (names.Length > 2)
 				{
@@ -95,13 +101,13 @@ namespace SeminarStandard
 						}
 						else
 						{
-							res = $"{res}, {and} {names[iCount]}.";
+							res = simpleMessage.GetNamesEndingMessage(res, names[iCount]);
 						}
 					}
 				}
 				else if (names.Length == 2)
 				{
-					res = $"{hello}{coma} {names[0]} {and} {names[1]}.";
+					res = simpleMessage.GetTwoNamesMessage(names[0], names[1]);
 				}
 				else
 				{
