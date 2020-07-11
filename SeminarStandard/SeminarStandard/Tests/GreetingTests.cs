@@ -87,5 +87,11 @@ namespace SeminarStandard
 		}
 
 
+		[Test]
+		public void ShouldHandleMultipleMoreMixed()
+		{
+			ExecuteTest("AMY,BRIAN,Tudor,Andreea,GEORGE,Marian", "Hello, Tudor, Andreea, and Marian. AND HELLO AMY, BRIAN, AND GEORGE!");
+		}
+
 	}
 }
