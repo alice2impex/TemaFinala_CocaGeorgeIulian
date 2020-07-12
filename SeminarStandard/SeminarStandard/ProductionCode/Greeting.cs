@@ -8,8 +8,8 @@ namespace SeminarStandard
 	{
 		const string hello = "Hello";
 		const string and = "and";
-		const string HELLO = "HELLO";
 		const string coma = ",";
+
 		string result = string.Empty;
 		IMessage simpleMessage = new SimpleMessage();
 		IMessage shoutingMessage = new ShoutingMessage();
@@ -25,7 +25,10 @@ namespace SeminarStandard
 				var names = name.Split(',');
 				if (names.Length == 2)
 				{
-					result = GetTwoNames(names);
+					if (name != name.ToUpper())
+						result = simpleMessage.GetTwoNamesMessage(names[0], names[1]);
+					else
+						result = shoutingMessage.GetTwoNamesMessage(names[0], names[1]);
 				}
 				else if (names.Length > 2)
 				{
@@ -104,23 +107,6 @@ namespace SeminarStandard
 				}
 			}
 			return res;
-		}
-
-		private string GetTwoNames(string[] names)
-		{
-			return $"{hello}, {names[0]} {and} {names[1]}.";
-		}
-
-
-		internal string GreetTwoNames(string[] names)
-		{
-			string result = String.Empty;
-			if (names.Length == 2)
-			{
-				result = $"{hello}, {names[0]} {and} {names[1]}.";
-			}
-
-			return result;
 		}
 	}
 }

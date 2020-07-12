@@ -47,20 +47,6 @@ namespace SeminarStandard
 		}
 
 		[Test]
-		public void ShouldHandleTwoNamesArray()
-		{
-			//Arrange
-			string[] names = { "Jill", "Jane" };
-
-			//Act
-			string result = greeting.GreetTwoNames(names);
-
-			//Assert
-			Assert.AreEqual("Hello, Jill and Jane.", result);
-		}
-
-
-		[Test]
 		public void ShouldHandleTwoNames()
 		{
 			ExecuteTest("Jill,Jane", "Hello, Jill and Jane.");
