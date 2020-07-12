@@ -76,23 +76,15 @@ namespace SeminarStandard
 					for (int iCount = 1; iCount < message.Names.Length; iCount++)
 					{
 						if (iCount != message.Names.Length - 1)
-						{
 							res = res + coma + " " + message.Names[iCount];
-						}
 						else
-						{
 							res = message.GetEndMessage(res, message.Names[iCount]);
-						}
 					}
 				}
 				else if (message.Names.Length == 2)
-				{
 					res = message.GetTwoNamesMessage(message.Names[0], message.Names[1]);
-				}
 				else
-				{
 					res = message.GetSingleNameMessage(message.Names[0]);
-				}
 			}
 			return res;
 		}
