@@ -18,10 +18,8 @@ namespace SeminarStandard
 		{
 			IFormatedMessage message = messageFactory.GetMessageByName(name);
 
-			if (string.IsNullOrEmpty(name))
-			{
-				result = $"{hello}, my friend.";
-			}
+			if (message == null)
+				return $"{hello}, my friend.";
 			else
 			{
 				var names = name.Split(',');

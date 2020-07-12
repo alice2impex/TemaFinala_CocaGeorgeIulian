@@ -54,6 +54,13 @@ namespace SeminarStandard
 
 
 		[Test]
+		public void ShouldHandleTwoNamesShouting()
+		{
+			ExecuteTest("JERRY,JILL", "HELLO JERRY AND JILL!");
+		}
+
+
+		[Test]
 		public void ShouldHandleMultipleNames3()
 		{
 			ExecuteTest("Amy,Brian,Charlotte", "Hello, Amy, Brian, and Charlotte.");
