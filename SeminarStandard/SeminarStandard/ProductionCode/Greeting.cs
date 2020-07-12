@@ -1,17 +1,14 @@
 ﻿using SeminarStandard.ProductionCode;
-using System;
-using System.Linq;
 
 namespace SeminarStandard
 {
 	internal class Greeting
 	{
+		//TODO: MAKE UNIT TESTS FOR FACTORY, FORMATED MESSAGE CLASSSES
 		const string hello = "Hello";
 		const string coma = ",";
 
 		string result = string.Empty;
-		IFormatedMessage simpleMessage = new SimpleMessage();
-		IFormatedMessage shoutingMessage = new ShoutingMessage();
 		MessageFactory messageFactory = new MessageFactory();
 
 		internal string Greet(string name)
@@ -42,21 +39,18 @@ namespace SeminarStandard
 
 		internal string ProcessMultipleNames(string[] names)
 		{
-			//Use string builder.
+			//TODO: Use string builder.
+			IFormatedMessage simpleMessage = new SimpleMessage();
+			IFormatedMessage shoutingMessage = new ShoutingMessage();
 			simpleMessage.SetFilteredNames(names);
 			shoutingMessage.SetFilteredNames(names);
 
 			string simpleGreetings = GetNamesGreetingMesage(simpleMessage);
 			string shoutingGreetings = GetNamesGreetingMesage(shoutingMessage);
 
-			if (simpleGreetings.Length > 0)
+			if (simpleGreetings.Length > 0 && shoutingGreetings.Length > 0)
 			{
-				result = simpleGreetings;
-			}
-
-			if (shoutingGreetings.Length > 0 && simpleGreetings.Length > 0)
-			{
-				result = result + " AND " + shoutingGreetings;
+				result = simpleGreetings + " AND " + shoutingGreetings;
 			}
 			else if (simpleGreetings.Length > 0)
 			{
@@ -64,7 +58,7 @@ namespace SeminarStandard
 			}
 			else
 			{
-				result = result + shoutingGreetings;
+				result = shoutingGreetings;
 			}
 
 			return result;
