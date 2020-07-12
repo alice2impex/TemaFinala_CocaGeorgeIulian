@@ -54,6 +54,7 @@
     <Compile Include="ProductionCode\IFormatedMessage.cs" />
     <Compile Include="ProductionCode\MessageFactory.cs" />
     <Compile Include="ProductionCode\ShoutingMessage.cs" />
+    <Compile Include="ProductionCode\RoyalMessage.cs" />
     <Compile Include="ProductionCode\SimpleMessage.cs" />
     <Compile Include="Tests\GreetingTests.cs" />
     <Compile Include="Program.cs" />
