@@ -1,11 +1,15 @@
 ﻿
+using System.Linq;
+
 namespace SeminarStandard.ProductionCode
 {
-	public class SimpleMessage: IMessage
+	public class SimpleMessage : IMessage
 	{
 		const string hello = "Hello";
 		const string and = "and";
 		const string coma = ",";
+
+		public string[] Names { get; set; }
 
 		public string GetStartMessage(string name)
 		{
@@ -22,5 +26,9 @@ namespace SeminarStandard.ProductionCode
 			return $"{hello}{coma} {name1} {and} {name2}.";
 		}
 
+		public void SetFilteredNames(string[] names)
+		{
+			Names = names.Where(name => name != name.ToUpper()).ToArray();
+		}
 	}
 }

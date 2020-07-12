@@ -1,11 +1,14 @@
 ﻿using System;
+using System.Linq;
 
 namespace SeminarStandard.ProductionCode
 {
-	public class ShoutingMessage: IMessage
+	public class ShoutingMessage : IMessage
 	{
 		const string HELLO = "HELLO";
 		const string AND = "AND";
+
+		public string[] Names { get; set; }
 
 		public string GetStartMessage(string name)
 		{
@@ -20,6 +23,11 @@ namespace SeminarStandard.ProductionCode
 		public string GetTwoNamesMessage(string name1, string name2)
 		{
 			return $"{HELLO} {name1} {AND} {name2}!";
+		}
+
+		public void SetFilteredNames(string[] names)
+		{
+			Names = names.Where(name => name == name.ToUpper()).ToArray();
 		}
 	}
 }

@@ -9,7 +9,6 @@ namespace SeminarStandard
 		const string hello = "Hello";
 		const string and = "and";
 		const string HELLO = "HELLO";
-		const string AND = "AND";
 		const string coma = ",";
 		string result = string.Empty;
 		IMessage simpleMessage = new SimpleMessage();
@@ -44,12 +43,11 @@ namespace SeminarStandard
 		internal string GreetMultipleNames(string[] names)
 		{
 			//Use string builder.
-			string[] shoutingNames = names.Where(name => name == name.ToUpper()).ToArray();
-			string[] simpleNames = names.Where(name => name != name.ToUpper()).ToArray();
+			simpleMessage.SetFilteredNames(names);
+			shoutingMessage.SetFilteredNames(names);
 
-
-			string simpleGreetings = GetNamesGreetingMesage(simpleNames, simpleMessage);
-			string shoutingGreetings = GetNamesGreetingMesage(shoutingNames, shoutingMessage);
+			string simpleGreetings = GetNamesGreetingMesage(simpleMessage);
+			string shoutingGreetings = GetNamesGreetingMesage(shoutingMessage);
 
 			if (simpleGreetings.Length > 0)
 			{
@@ -72,37 +70,34 @@ namespace SeminarStandard
 			return result;
 		}
 
-		private string GetNamesGreetingMesage(string[] names, IMessage message)
+		private string GetNamesGreetingMesage(IMessage message)
 		{
-			//MESSAGE abstract then interface to replace Simple and Shouting Message. form outside give shouting message
-
-
 			string res = string.Empty;
-			if (names.Length > 0)
+			if (message.Names.Length > 0)
 			{
-				res = message.GetStartMessage(names[0]);
+				res = message.GetStartMessage(message.Names[0]);
 
-				if (names.Length > 2)
+				if (message.Names.Length > 2)
 				{
-					for (int iCount = 1; iCount < names.Length; iCount++)
+					for (int iCount = 1; iCount < message.Names.Length; iCount++)
 					{
-						if (iCount != names.Length - 1)
+						if (iCount != message.Names.Length - 1)
 						{
-							res = res + coma + " " + names[iCount];
+							res = res + coma + " " + message.Names[iCount];
 						}
 						else
 						{
-							res = message.GetEndMessage(res, names[iCount]);
+							res = message.GetEndMessage(res, message.Names[iCount]);
 						}
 					}
 				}
-				else if (names.Length == 2)
+				else if (message.Names.Length == 2)
 				{
-					res = message.GetTwoNamesMessage(names[0], names[1]);
+					res = message.GetTwoNamesMessage(message.Names[0], message.Names[1]);
 				}
 				else
 				{
-					res = GetSingleNameMessage(names[0]);
+					res = GetSingleNameMessage(message.Names[0]);
 				}
 			}
 			return res;

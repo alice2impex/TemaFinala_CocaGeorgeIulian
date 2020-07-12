@@ -10,5 +10,9 @@ namespace SeminarStandard.ProductionCode
 		string GetEndMessage(string res, string name);
 
 		string GetTwoNamesMessage(string name1, string name2);
+
+		string[] Names { get; set; }
+		void SetFilteredNames(string[] names);
+
 	}
 }
