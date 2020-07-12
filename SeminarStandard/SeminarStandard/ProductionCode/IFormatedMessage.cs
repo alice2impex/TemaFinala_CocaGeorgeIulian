@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-
+﻿
 namespace SeminarStandard.ProductionCode
 {
-	public interface IMessage
+	public interface IFormatedMessage
 	{
 		string GetStartMessage(string name);
 
@@ -14,7 +12,7 @@ namespace SeminarStandard.ProductionCode
 		string GetSingleNameMessage(string name);
 
 		string[] Names { get; set; }
-		void SetFilteredNames(string[] names);
 
+		void SetFilteredNames(string[] names);
 	}
 }

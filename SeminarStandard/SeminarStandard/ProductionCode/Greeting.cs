@@ -7,15 +7,17 @@ namespace SeminarStandard
 	internal class Greeting
 	{
 		const string hello = "Hello";
-		const string and = "and";
 		const string coma = ",";
 
 		string result = string.Empty;
-		IMessage simpleMessage = new SimpleMessage();
-		IMessage shoutingMessage = new ShoutingMessage();
+		IFormatedMessage simpleMessage = new SimpleMessage();
+		IFormatedMessage shoutingMessage = new ShoutingMessage();
+		MessageFactory messageFactory = new MessageFactory();
 
 		internal string Greet(string name)
 		{
+			IFormatedMessage message = messageFactory.GetMessageByName(name);
+
 			if (string.IsNullOrEmpty(name))
 			{
 				result = $"{hello}, my friend.";
@@ -25,28 +27,22 @@ namespace SeminarStandard
 				var names = name.Split(',');
 				if (names.Length == 2)
 				{
-					if (name != name.ToUpper())
-						result = simpleMessage.GetTwoNamesMessage(names[0], names[1]);
-					else
-						result = shoutingMessage.GetTwoNamesMessage(names[0], names[1]);
+					result = message.GetTwoNamesMessage(names[0], names[1]);
 				}
 				else if (names.Length > 2)
 				{
-					result = GreetMultipleNames(names);
+					result = ProcessMultipleNames(names);
 				}
 				else
 				{
-					if (name != name.ToUpper())
-						result = simpleMessage.GetSingleNameMessage(name);
-					else
-						result = shoutingMessage.GetSingleNameMessage(name);
+					result = message.GetSingleNameMessage(name);
 				}
 			}
 
 			return result;
 		}
 
-		internal string GreetMultipleNames(string[] names)
+		internal string ProcessMultipleNames(string[] names)
 		{
 			//Use string builder.
 			simpleMessage.SetFilteredNames(names);
@@ -76,7 +72,7 @@ namespace SeminarStandard
 			return result;
 		}
 
-		private string GetNamesGreetingMesage(IMessage message)
+		private string GetNamesGreetingMesage(IFormatedMessage message)
 		{
 			string res = string.Empty;
 			if (message.Names.Length > 0)

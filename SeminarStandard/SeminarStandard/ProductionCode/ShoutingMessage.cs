@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace SeminarStandard.ProductionCode
 {
-	public class ShoutingMessage : IMessage
+	public class ShoutingMessage : IFormatedMessage
 	{
 		const string HELLO = "HELLO";
 		const string AND = "AND";
