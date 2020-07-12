@@ -30,5 +30,10 @@ namespace SeminarStandard.ProductionCode
 		{
 			Names = names.Where(name => name != name.ToUpper()).ToArray();
 		}
+
+		public string GetSingleNameMessage(string name)
+		{
+			return $"{hello}, {name}.";
+		}
 	}
 }

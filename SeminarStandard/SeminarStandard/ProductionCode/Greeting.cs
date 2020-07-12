@@ -33,7 +33,10 @@ namespace SeminarStandard
 				}
 				else
 				{
-					result = GetSingleNameMessage(name);
+					if (name != name.ToUpper())
+						result = simpleMessage.GetSingleNameMessage(name);
+					else
+						result = shoutingMessage.GetSingleNameMessage(name);
 				}
 			}
 
@@ -97,7 +100,7 @@ namespace SeminarStandard
 				}
 				else
 				{
-					res = GetSingleNameMessage(message.Names[0]);
+					res = message.GetSingleNameMessage(message.Names[0]);
 				}
 			}
 			return res;
@@ -108,15 +111,6 @@ namespace SeminarStandard
 			return $"{hello}, {names[0]} {and} {names[1]}.";
 		}
 
-		private string GetSingleNameMessage(string name)
-		{
-			if (name == name.ToUpper())
-			{
-				return $"{HELLO} {name}!";
-			}
-			else
-				return $"{hello}, {name}.";
-		}
 
 		internal string GreetTwoNames(string[] names)
 		{
