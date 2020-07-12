@@ -12,6 +12,8 @@ namespace SeminarStandard
 		const string AND = "AND";
 		const string coma = ",";
 		string result = string.Empty;
+		IMessage simpleMessage = new SimpleMessage();
+		IMessage shoutingMessage = new ShoutingMessage();
 
 		internal string Greet(string name)
 		{
@@ -45,8 +47,9 @@ namespace SeminarStandard
 			string[] shoutingNames = names.Where(name => name == name.ToUpper()).ToArray();
 			string[] simpleNames = names.Where(name => name != name.ToUpper()).ToArray();
 
-			string simpleGreetings = GetNamesGreetingMesage(simpleNames);
-			string shoutingGreetings = GetNamesGreetingMesage(shoutingNames, true);
+
+			string simpleGreetings = GetNamesGreetingMesage(simpleNames, simpleMessage);
+			string shoutingGreetings = GetNamesGreetingMesage(shoutingNames, shoutingMessage);
 
 			if (simpleGreetings.Length > 0)
 			{
@@ -69,22 +72,15 @@ namespace SeminarStandard
 			return result;
 		}
 
-		private string GetNamesGreetingMesage(string[] names, bool isShouting = false)
+		private string GetNamesGreetingMesage(string[] names, IMessage message)
 		{
-			var simpleMessage = new SimpleMessage();
-			var shoutingMessage = new ShoutingMessage();
+			//MESSAGE abstract then interface to replace Simple and Shouting Message. form outside give shouting message
+
 
 			string res = string.Empty;
 			if (names.Length > 0)
 			{
-				if (!isShouting)
-				{
-					res = simpleMessage.GetStartMessage(names[0]);
-				}
-				else
-				{
-					res = shoutingMessage.GetStartMessageShouting(names[0]);
-				}
+				res = message.GetStartMessage(names[0]);
 
 				if (names.Length > 2)
 				{
@@ -96,28 +92,13 @@ namespace SeminarStandard
 						}
 						else
 						{
-							if (!isShouting)
-							{
-								res = simpleMessage.GetEndMessage(res, names[iCount]);
-							}
-							else
-							{
-								res = shoutingMessage.GetEndMessageShouting(res, names[iCount]);
-							}
+							res = message.GetEndMessage(res, names[iCount]);
 						}
 					}
 				}
 				else if (names.Length == 2)
 				{
-					if (!isShouting)
-					{
-						res = simpleMessage.GetTwoNamesMessage(names[0], names[1]);
-
-					}
-					else
-					{
-						res = shoutingMessage.GetTwoNamesMessageShouting(names[0], names[1]);
-					}
+					res = message.GetTwoNamesMessage(names[0], names[1]);
 				}
 				else
 				{
@@ -131,10 +112,6 @@ namespace SeminarStandard
 		{
 			return $"{hello}, {names[0]} {and} {names[1]}.";
 		}
-
-
-
-
 
 		private string GetSingleNameMessage(string name)
 		{

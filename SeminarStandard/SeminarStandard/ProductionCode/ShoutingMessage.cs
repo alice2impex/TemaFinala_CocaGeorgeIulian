@@ -1,33 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SeminarStandard.ProductionCode
 {
-	public class ShoutingMessage
+	public class ShoutingMessage: IMessage
 	{
 		const string HELLO = "HELLO";
 		const string AND = "AND";
 
-		public string GetStartMessageShouting(string name)
+		public string GetStartMessage(string name)
 		{
 			return $"{HELLO} {name}";
 		}
 
-		public string GetEndMessageShouting(string res, string name)
+		public string GetEndMessage(string res, string name)
 		{
 			return $"{res}, {AND} {name}!";
 		}
 
-		public string GetTwoNamesMessageShouting(string name1, string name2)
+		public string GetTwoNamesMessage(string name1, string name2)
 		{
 			return $"{HELLO} {name1} {AND} {name2}!";
 		}
-
-
-
-
 	}
 }

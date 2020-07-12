@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ProductionCode\Greeting.cs" />
+    <Compile Include="ProductionCode\IMessage.cs" />
     <Compile Include="ProductionCode\ShoutingMessage.cs" />
     <Compile Include="ProductionCode\SimpleMessage.cs" />
     <Compile Include="Tests\GreetingTests.cs" />

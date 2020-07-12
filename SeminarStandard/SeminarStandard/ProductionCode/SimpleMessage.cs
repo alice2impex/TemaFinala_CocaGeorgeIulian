@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace SeminarStandard.ProductionCode
 {
-	public class SimpleMessage
+	public class SimpleMessage: IMessage
 	{
 		const string hello = "Hello";
 		const string and = "and";
@@ -26,9 +21,6 @@ namespace SeminarStandard.ProductionCode
 		{
 			return $"{hello}{coma} {name1} {and} {name2}.";
 		}
-
-		
-
 
 	}
 }
