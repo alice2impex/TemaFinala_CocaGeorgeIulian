@@ -4,10 +4,8 @@ namespace SeminarStandard
 {
 	internal class Greeting
 	{
-		//TODO: MAKE UNIT TESTS FOR FACTORY, FORMATED MESSAGE CLASSSES
 		const string hello = "Hello";
 		const string coma = ",";
-
 		string result = string.Empty;
 		MessageFactory messageFactory = new MessageFactory();
 
@@ -21,17 +19,11 @@ namespace SeminarStandard
 			{
 				var names = name.Split(',');
 				if (names.Length == 2)
-				{
 					result = message.GetTwoNamesMessage(names[0], names[1]);
-				}
 				else if (names.Length > 2)
-				{
 					result = ProcessMultipleNames(names);
-				}
 				else
-				{
 					result = message.GetSingleNameMessage(name);
-				}
 			}
 
 			return result;
@@ -40,6 +32,7 @@ namespace SeminarStandard
 		internal string ProcessMultipleNames(string[] names)
 		{
 			//TODO: Use string builder.
+			//TODO: MAKE UNIT TESTS FOR FACTORY, FORMATED MESSAGE CLASSSES
 			IFormatedMessage simpleMessage = new SimpleMessage();
 			IFormatedMessage shoutingMessage = new ShoutingMessage();
 			simpleMessage.SetFilteredNames(names);
