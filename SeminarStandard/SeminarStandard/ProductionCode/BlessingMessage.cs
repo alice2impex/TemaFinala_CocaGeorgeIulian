@@ -3,11 +3,11 @@ using System.Linq;
 
 namespace SeminarStandard.ProductionCode
 {
-	public class RoyalMessage : IFormatedMessage
+	public class BlessingMessage : IFormatedMessage
 	{
-		const string hello = "Greetings";
+		const string hello = "May you be blessed";
 		const string and = "&";
-		const string separator = "Your Majesty";
+		const string separator = "and best wishes to";
 
 		public string[] Names { get; set; }
 
@@ -28,7 +28,6 @@ namespace SeminarStandard.ProductionCode
 
 		public void SetFilteredNames(string[] names)
 		{
-			//Royalitycheck
 			Names = names.Where(name => name != name.ToUpper()).ToArray();
 		}
 
