@@ -50,17 +50,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Production\Car.cs" />
+    <Compile Include="Production\CarRepository.cs" />
+    <Compile Include="Production\CarsManager.cs" />
+    <Compile Include="Production\ExcelService.cs" />
+    <Compile Include="Production\IExcelService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestUnits\CarsManagerTests.cs" />
+    <Compile Include="Production\ICarRepository.cs" />
+    <Compile Include="TestUnits\FakeExcelService.cs" />
+    <Compile Include="TestUnits\FakeCarRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ProductionCode\" />
-    <Folder Include="Tests\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
