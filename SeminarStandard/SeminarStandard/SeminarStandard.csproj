@@ -50,14 +50,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ProductionCode\Greeting.cs" />
-    <Compile Include="ProductionCode\IFormatedMessage.cs" />
-    <Compile Include="ProductionCode\MessageFactory.cs" />
-    <Compile Include="ProductionCode\BlessingMessage.cs" />
-    <Compile Include="ProductionCode\ShoutingMessage.cs" />
-    <Compile Include="ProductionCode\RoyalMessage.cs" />
-    <Compile Include="ProductionCode\SimpleMessage.cs" />
-    <Compile Include="Tests\GreetingTests.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -65,7 +57,10 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="ProductionCode\" />
+    <Folder Include="Tests\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
