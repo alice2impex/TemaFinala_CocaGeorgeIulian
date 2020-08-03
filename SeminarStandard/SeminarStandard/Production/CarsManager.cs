@@ -5,9 +5,6 @@ namespace SeminarStandard.Production
 {
 	internal class CarsManager
 	{
-		//TODO TEAR DOWN AND SETUP
-
-
 		private readonly ICarRepository carRepository;
 		private readonly IExcelService excelService;
 

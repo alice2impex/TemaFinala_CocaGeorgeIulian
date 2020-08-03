@@ -2,7 +2,7 @@
 
 namespace SeminarStandard.Production
 {
-	internal interface ICarRepository
+	public interface ICarRepository
 	{
 		List<Car> GetAll();
 	}
