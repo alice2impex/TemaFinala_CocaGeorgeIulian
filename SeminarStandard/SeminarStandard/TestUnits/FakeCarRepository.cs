@@ -5,7 +5,6 @@ namespace SeminarStandard.TestUnits
 {
 	internal class FakeCarRepository : ICarRepository
 	{
-
 		List<Car> cars = new List<Car>();
 
 		public FakeCarRepository()
