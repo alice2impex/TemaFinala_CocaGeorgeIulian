@@ -11,13 +11,6 @@ namespace SeminarStandard
 	{
 		static void Main(string[] args)
 		{
-			CarsManager carsManager = new CarsManager(new CarRepository(), new ExcelService());
-			bool success = carsManager.Export(@"C:\cars.csv");
-			if (success)
-			{
-				Console.WriteLine("Was Sucessfully Exported!");
-			}
-
 		}
 	}
 }

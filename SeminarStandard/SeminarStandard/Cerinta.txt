@@ -1,0 +1,16 @@
+﻿Se da un numar arab sa se converteasca in numar roman.
+Ex:
+
+3=III
+4=IV
+10=X
+1986=MCMLXXXVI
+
+
+
+
+TEMA: 
+
+- Continuati algoritmul
+- Atentie la Exceptional cases & null
+- Refactoring Refactoring Refactoring!!!
